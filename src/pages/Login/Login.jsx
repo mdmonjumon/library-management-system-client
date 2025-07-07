@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
+const Login = () => {
 
-const Register = () => {
     const [email, setEmail] = useState({
         regName: false,
         regPhoto: false,
@@ -10,14 +10,14 @@ const Register = () => {
         regPassword: false
     });
 
-    
+
     return (
         <div className="hero bg-base-200 min-h-screen">
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="card bg-base-100 min-w-sm md:min-w-md lg:min-w-lg shrink-0 shadow-2xl">
                     <div className="card-body">
                         <h2 className="text-xl text-center">Lets Take Your Book</h2>
-                        <h3 className="text-lg text-center">Create Your Account For Free</h3>
+                        <h3 className="text-lg text-center">Login Now!</h3>
                         <form>
                             <fieldset className="fieldset space-y-5">
                                 {/* name */}
@@ -68,10 +68,10 @@ const Register = () => {
                                         required />
                                 </div>
 
-                                <button className="btn btn-neutral">Register</button>
+                                <button className="btn btn-neutral">Login</button>
                             </fieldset>
                         </form>
-                        <p className="text-center text-base">Already have an account? <Link to='/login' className="text-rose-500">Login</Link></p>
+                        <p className="text-center text-base">Don't have an account? <Link to='/register' className="text-rose-500">Register</Link></p>
                     </div>
                 </div>
             </div>
@@ -79,4 +79,4 @@ const Register = () => {
     );
 };
 
-export default Register;
+export default Login;
