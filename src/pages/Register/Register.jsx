@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import SocialLogin from "../shared/SocialLogin";
 
 
 const Register = () => {
@@ -72,6 +73,8 @@ const Register = () => {
                             </fieldset>
                         </form>
                         <p className="text-center text-base">Already have an account? <Link to='/login' className="text-rose-500">Login</Link></p>
+
+                        <SocialLogin></SocialLogin>
                     </div>
                 </div>
             </div>

@@ -21,7 +21,7 @@ const Navbar = () => {
                         {links}
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-xl">daisyUI</a>
+                <h2 className='text-lg font-medium bg-gradient-to-r from-blue-500 to-green-500 text-clip text-transparent bg-clip-text'>BookOcean</h2>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 text-lg">

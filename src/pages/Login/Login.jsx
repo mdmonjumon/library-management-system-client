@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import SocialLogin from "../shared/SocialLogin";
 
 const Login = () => {
 
@@ -20,30 +21,6 @@ const Login = () => {
                         <h3 className="text-lg text-center">Login Now!</h3>
                         <form>
                             <fieldset className="fieldset space-y-5">
-                                {/* name */}
-                                <div className="relative">
-                                    <label className={`text-sm absolute left-3 ${email.regName ? '-top-2.5 bg-white z-20' : 'top-2.5'}`}>Name</label>
-                                    <input type="text"
-                                        onBlur={(e) => e.target.value ? setEmail({ ...email, regName: true }) : setEmail({ ...email, regName: false })}
-                                        onFocus={() => setEmail({ ...email, regName: true })}
-                                        className="input focus-within:outline-0 w-full"
-                                        name="name"
-                                        placeholder={`${email?.regName ? '' : 'Name'}`}
-                                        required />
-                                </div>
-
-                                {/* photo */}
-                                <div className="relative">
-                                    <label className={`text-sm absolute left-3 ${email.regPhoto ? '-top-2.5 bg-white z-20' : 'top-2.5'}`}>Photo URL</label>
-                                    <input type="url"
-                                        onBlur={(e) => e.target.value ? setEmail({ ...email, regPhoto: true }) : setEmail({ ...email, regPhoto: false })}
-                                        onFocus={() => setEmail({ ...email, regPhoto: true })}
-                                        className="input focus-within:outline-0 w-full"
-                                        name="photo"
-                                        placeholder={`${email?.regPhoto ? '' : 'Photo URL'}`}
-                                        required />
-                                </div>
-
                                 {/* email */}
                                 <div className="relative">
                                     <label className={`text-sm absolute left-3 ${email.regEmail ? '-top-2.5 bg-white z-20' : 'top-2.5'}`}>Email</label>
@@ -72,6 +49,8 @@ const Login = () => {
                             </fieldset>
                         </form>
                         <p className="text-center text-base">Don't have an account? <Link to='/register' className="text-rose-500">Register</Link></p>
+
+                        <SocialLogin></SocialLogin>
                     </div>
                 </div>
             </div>
