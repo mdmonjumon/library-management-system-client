@@ -1,5 +1,6 @@
 import AboutUs from "../../components/AboutUs";
 import Carousel from "../../components/Carousel";
+import Category from "../../components/Category";
 
 
 const Home = () => {
@@ -13,6 +14,11 @@ const Home = () => {
             {/* about us section */}
             <section>
                 <AboutUs></AboutUs>
+            </section>
+
+            {/* category section */}
+            <section>
+                <Category></Category>
             </section>
 
         </div>
