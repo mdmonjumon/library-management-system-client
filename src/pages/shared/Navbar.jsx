@@ -9,8 +9,6 @@ const Navbar = () => {
         <li><NavLink>Borrowed Books</NavLink> </li>
     </>
 
-    // fixed top-0 z-50 left-1/2 -translate-x-1/2 bg-white
-
     return (
         <div className='w-full fixed top-0 left-1/2 -translate-x-1/2 z-10 bg-white/80'>
             <div className="navbar max-w-7xl mx-auto">

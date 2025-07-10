@@ -8,7 +8,7 @@ import { FaSquareInstagram } from 'react-icons/fa6';
 const Footer = () => {
     return (
         <div className='bg-base-200'>
-            <footer className="footer grid-cols-4 max-w-7xl mx-auto sm:footer-horizontal text-base-content p-10 place-items-center-safe">
+            <footer className="footer grid-cols-1 lg:grid-cols-4 max-w-7xl mx-auto sm:footer-horizontal text-base-content p-10 place-items-center-safe">
                 <aside className='col-span-2'>
                     <img className='w-20' src={footerLogo} alt="" />
                     <h2 className='text-lg font-medium bg-gradient-to-r from-blue-500 to-green-500 text-clip text-transparent bg-clip-text'>BookOcean</h2>
@@ -16,14 +16,14 @@ const Footer = () => {
 
                     {/* social links */}
                     <div className='flex items-center gap-3 mt-5'>
-                        <FaFacebookF className='hover:cursor-pointer' size='25'/>
-                        <CgTwitter className='hover:cursor-pointer' size='30'/>
-                        <FaSquareInstagram className='hover:cursor-pointer' size='25'/>
-                        <FaLinkedinIn className='hover:cursor-pointer' size='30'/>
+                        <FaFacebookF className='hover:cursor-pointer' size='25' />
+                        <CgTwitter className='hover:cursor-pointer' size='30' />
+                        <FaSquareInstagram className='hover:cursor-pointer' size='25' />
+                        <FaLinkedinIn className='hover:cursor-pointer' size='30' />
                     </div>
                 </aside>
 
-                <nav>
+                <nav className='col-span-2  md:col-span-1'>
                     <h6 className="footer-title">Contact Us</h6>
                     {/* address */}
                     <div className='flex'>

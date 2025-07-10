@@ -42,7 +42,8 @@ const Carousel = () => {
                 {/* slide 2 */}
                 <SwiperSlide>
                 <Slide
-                heading="this is heading"
+                heading="Smart Library Management"
+                intro='Simplify book tracking, member management, and lending with our powerful, user-friendly system.'
                 image={slide2}
                 ></Slide>
                 </SwiperSlide>
@@ -50,7 +51,8 @@ const Carousel = () => {
                 {/* slide 3 */}
                 <SwiperSlide>
                 <Slide
-                heading="this is heading"
+                heading="Access Anywhere, Anytime"
+                intro="Whether you're at home or on campus — explore and reserve books with just a few clicks."
                 image={slide3}
                 ></Slide>
                 </SwiperSlide>
@@ -58,7 +60,8 @@ const Carousel = () => {
                 {/* slide 4 */}
                 <SwiperSlide>
                 <Slide
-                heading="this is heading"
+                heading="Join the BookOcean Community"
+                intro="Let me know if you want the Bengali version or want it styled for a school, college, or public library."
                 image={slide4}
                 ></Slide>
                 </SwiperSlide>
