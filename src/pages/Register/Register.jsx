@@ -3,10 +3,15 @@ import { Link } from "react-router-dom";
 import SocialLogin from "../shared/SocialLogin";
 import { FaRegEye } from "react-icons/fa6";
 import { GoEyeClosed } from "react-icons/go";
+import UseAuth from "../../hooks/UseAuth";
 
 
 
 const Register = () => {
+
+    const { registerUser, updateUserProfile } = UseAuth();
+
+    // for email and placeholder legend
     const [email, setEmail] = useState({
         regName: false,
         regPhoto: false,
@@ -14,7 +19,30 @@ const Register = () => {
         regPassword: false
     });
 
+    // state for toggle password
     const [showPassword, setShowPassword] = useState(false)
+
+    const handleRegister = (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const initialData = Object.fromEntries(formData.entries());
+        const { name, photo, email, password } = initialData;
+        const userInfo = { displayName: name, photoURL: photo }
+
+        registerUser(email, password)
+            .then((result) => {
+                if (result?.user?.email) {
+                    updateUserProfile(userInfo)
+                }
+                console.log(result.user)
+                alert('registration success');
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
+
+    }
+
 
 
     return (
@@ -24,7 +52,7 @@ const Register = () => {
                     <div className="card-body">
                         <h2 className="text-xl text-center">Lets Take Your Book</h2>
                         <h3 className="text-lg text-center">Create Your Account For Free</h3>
-                        <form>
+                        <form onSubmit={handleRegister}>
                             <fieldset className="fieldset space-y-5">
                                 {/* name */}
                                 <div className="relative">
