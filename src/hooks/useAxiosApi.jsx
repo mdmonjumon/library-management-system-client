@@ -1,11 +1,12 @@
+import axios from "axios";
 
+
+const axiosInstance = axios.create({
+    baseURL:"http://localhost:5000/"
+})
 
 const useAxiosApi = () => {
-    return (
-        <div>
-            
-        </div>
-    );
+    return axiosInstance
 };
 
 export default useAxiosApi;
