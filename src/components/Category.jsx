@@ -12,7 +12,7 @@ const Category = () => {
 
             <p className="text-center lg:w-1/2 mx-auto">Discover a diverse collection of book categories — including Fiction, Non-Fiction, Science, History, Technology, and more. Whether you're a student, researcher, or casual reader, there's something for everyone.</p>
 
-            <div className="gird grid-cols-1 md:grid-cols-2 lg:grid-cols-4 place-items-center">
+            <div className="gird grid-cols-1 md:grid-cols-2 lg:grid-cols-4 place-items-center mt-20">
                 <CategoryCard></CategoryCard>
             </div>
         </div>
