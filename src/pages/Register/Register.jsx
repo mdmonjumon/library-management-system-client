@@ -10,6 +10,7 @@ import UseAuth from "../../hooks/UseAuth";
 const Register = () => {
 
     const { registerUser, updateUserProfile } = UseAuth();
+    const [error, setError] = useState('')
 
     // for email and placeholder legend
     const [email, setEmail] = useState({
@@ -28,6 +29,13 @@ const Register = () => {
         const initialData = Object.fromEntries(formData.entries());
         const { name, photo, email, password } = initialData;
         const userInfo = { displayName: name, photoURL: photo }
+
+        const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/;
+        if (!regex.test(password)) {
+            setError('Password must be at least 6 characters long with one uppercase, one lowercase letter and one number.')
+            return
+
+        }
 
         registerUser(email, password)
             .then((result) => {
@@ -48,7 +56,7 @@ const Register = () => {
     return (
         <div className="hero bg-base-200 min-h-[calc(100vh-353px)] mt-14">
             <div className="hero-content flex-col lg:flex-row-reverse mt-10">
-                <div className="card bg-base-100 min-w-sm md:min-w-md lg:min-w-lg shrink-0 shadow-2xl">
+                <div className="card bg-base-100 min-w-sm md:min-w-lg md:max-w-lg shrink-0 shadow-2xl">
                     <div className="card-body">
                         <h2 className="text-xl text-center">Lets Take Your Book</h2>
                         <h3 className="text-lg text-center">Create Your Account For Free</h3>
@@ -106,6 +114,11 @@ const Register = () => {
                                             showPassword ? <FaRegEye size='20' /> : <GoEyeClosed size='20' />
                                         }
                                     </div>
+
+                                    {/* password validation error message */}
+                                    
+                                    {error && <p className="text-rose-400">{error}</p>}
+
                                 </div>
 
                                 <button className="btn btn-neutral">Register</button>

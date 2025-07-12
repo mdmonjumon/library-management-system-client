@@ -15,6 +15,7 @@ const Navbar = () => {
 
 
     const handleLogout = () => {
+        setHover(false)
         userLogout()
     }
 
@@ -43,7 +44,8 @@ const Navbar = () => {
                     {
                         user?.email ?
                             <div onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
-                                <img className='w-12 size-full object-cover rounded-full'
+
+                                <img referrerpolicy="no-referrer" className='w-12 h-12 size-full object-cover rounded-full'
                                     src={user.photoURL} alt="" />
 
                                 <div className={`flex flex-col gap-2 rounded absolute bg-white p-5 -top-120 right-0 ${hover ? 'top-12 right-0' : ''}`}>
@@ -52,6 +54,7 @@ const Navbar = () => {
                                 </div>
                             </div>
                             : <>
+
                                 <button className='text-lg mr-4'><Link to='login'>Login</Link></button>
                                 <button className='text-lg'><Link to='register'>Register</Link></button>
                             </>
