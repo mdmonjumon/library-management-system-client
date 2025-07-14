@@ -3,6 +3,7 @@ import MainLayout from "../layout/MainLayout";
 import Register from "../pages/Register/Register";
 import Login from "../pages/Login/Login";
 import Home from "../pages/Home/Home";
+import CategoryWiseBooks from "../pages/CategoryWiseBooks/CategoryWiseBooks";
 
 
 const router = createBrowserRouter([
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
             {
                 path:'/',
                 element:<Home></Home>
+            },
+            {
+                path:'books/:category',
+                element:<CategoryWiseBooks></CategoryWiseBooks>
             },
             {
                 path:'register',

@@ -1,6 +1,7 @@
 import { FaBusinessTime, FaUser } from "react-icons/fa6";
 import { GrTechnology } from "react-icons/gr";
 import { HiMusicNote } from "react-icons/hi";
+import { Link } from "react-router-dom";
 
 
 const CategoryCard = ({ category }) => {
@@ -48,7 +49,7 @@ const CategoryCard = ({ category }) => {
                 <div className="w-3 h-3 bg-gray-400 rotate-45"></div>
                 <div className="divider w-24"></div>
             </div>
-            <h2 className={`text-center py-2 text-lg w-full rounded hover:cursor-pointer ${categoryName}`}>{category}</h2>
+            <Link to={`/books/${encodeURIComponent(category)}`} className={`text-center py-2 text-lg w-full rounded hover:cursor-pointer ${categoryName}`}>{category}</Link>
         </div>
     );
 };
