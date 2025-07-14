@@ -1,5 +1,6 @@
 import Rating from "react-rating";
 import { FaRegStar, FaStar } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 
 
@@ -27,13 +28,13 @@ const BookCard = ({ book }) => {
                 <p>Price : ${price}</p>
                 <p>Total Pages: {length}</p>
                 <Rating
-                initialRating={rating}
-                emptySymbol={<span><FaRegStar className="text-xl" /></span>}
-                fullSymbol={<span><FaStar   className="text-yellow-400 text-xl"/></span>}
+                    initialRating={rating}
+                    emptySymbol={<span><FaRegStar className="text-xl" /></span>}
+                    fullSymbol={<span><FaStar className="text-yellow-400 text-xl" /></span>}
                 ></Rating>
 
                 <div className="card-actions justify-start">
-                    <button className="btn btn-primary">Details</button>
+                    <Link to={`/book-details/${_id}`}><button className="btn btn-primary">Details</button></Link>
                 </div>
             </div>
         </div>

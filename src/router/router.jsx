@@ -4,6 +4,7 @@ import Register from "../pages/Register/Register";
 import Login from "../pages/Login/Login";
 import Home from "../pages/Home/Home";
 import CategoryWiseBooks from "../pages/CategoryWiseBooks/CategoryWiseBooks";
+import BookDetails from "../components/BookDetails";
 
 
 const router = createBrowserRouter([
@@ -19,6 +20,11 @@ const router = createBrowserRouter([
             {
                 path:'books/:category',
                 element:<CategoryWiseBooks></CategoryWiseBooks>
+            },
+            {
+                path:'book-details/:id',
+                element:<BookDetails></BookDetails>
+                
             },
             {
                 path:'register',

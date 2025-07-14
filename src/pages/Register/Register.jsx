@@ -12,8 +12,8 @@ const Register = () => {
     const { registerUser, updateUserProfile } = UseAuth();
     const [error, setError] = useState('')
 
-    // for email and placeholder legend
-    const [email, setEmail] = useState({
+    // for placeholder legend
+    const [placeholder, setPlaceholder] = useState({
         regName: false,
         regPhoto: false,
         regEmail: false,
@@ -64,49 +64,49 @@ const Register = () => {
                             <fieldset className="fieldset space-y-5">
                                 {/* name */}
                                 <div className="relative">
-                                    <label className={`text-sm absolute left-3 ${email.regName ? '-top-2.5 bg-white z-20' : 'top-2.5'}`}>Name</label>
+                                    <label className={`text-sm absolute left-3 ${placeholder.regName ? '-top-2.5 bg-white z-20' : 'top-2.5'}`}>Name</label>
                                     <input type="text"
-                                        onBlur={(e) => e.target.value ? setEmail({ ...email, regName: true }) : setEmail({ ...email, regName: false })}
-                                        onFocus={() => setEmail({ ...email, regName: true })}
+                                        onBlur={(e) => e.target.value ? setPlaceholder({ ...placeholder, regName: true }) : setPlaceholder({ ...placeholder, regName: false })}
+                                        onFocus={() => setPlaceholder({ ...placeholder, regName: true })}
                                         className="input focus-within:outline-0 w-full"
                                         name="name"
-                                        placeholder={`${email?.regName ? '' : 'Name'}`}
+                                        placeholder={`${placeholder?.regName ? '' : 'Name'}`}
                                         required />
                                 </div>
 
                                 {/* photo */}
                                 <div className="relative">
-                                    <label className={`text-sm absolute left-3 ${email.regPhoto ? '-top-2.5 bg-white z-20' : 'top-2.5'}`}>Photo URL</label>
+                                    <label className={`text-sm absolute left-3 ${placeholder.regPhoto ? '-top-2.5 bg-white z-20' : 'top-2.5'}`}>Photo URL</label>
                                     <input type="url"
-                                        onBlur={(e) => e.target.value ? setEmail({ ...email, regPhoto: true }) : setEmail({ ...email, regPhoto: false })}
-                                        onFocus={() => setEmail({ ...email, regPhoto: true })}
+                                        onBlur={(e) => e.target.value ? setPlaceholder({ ...placeholder, regPhoto: true }) : setPlaceholder({ ...placeholder, regPhoto: false })}
+                                        onFocus={() => setPlaceholder({ ...placeholder, regPhoto: true })}
                                         className="input focus-within:outline-0 w-full"
                                         name="photo"
-                                        placeholder={`${email?.regPhoto ? '' : 'Photo URL'}`}
+                                        placeholder={`${placeholder?.regPhoto ? '' : 'Photo URL'}`}
                                         required />
                                 </div>
 
                                 {/* email */}
                                 <div className="relative">
-                                    <label className={`text-sm absolute left-3 ${email.regEmail ? '-top-2.5 bg-white z-20' : 'top-2.5'}`}>Email</label>
+                                    <label className={`text-sm absolute left-3 ${placeholder.regEmail ? '-top-2.5 bg-white z-20' : 'top-2.5'}`}>Email</label>
                                     <input type="email"
-                                        onBlur={(e) => e.target.value ? setEmail({ ...email, regEmail: true }) : setEmail({ ...email, regEmail: false })}
-                                        onFocus={() => setEmail({ ...email, regEmail: true })}
+                                        onBlur={(e) => e.target.value ? setPlaceholder({ ...placeholder, regEmail: true }) : setPlaceholder({ ...placeholder, regEmail: false })}
+                                        onFocus={() => setPlaceholder({ ...placeholder, regEmail: true })}
                                         className="input focus-within:outline-0 w-full"
                                         name="email"
-                                        placeholder={`${email?.regEmail ? '' : 'Email'}`}
+                                        placeholder={`${placeholder?.regEmail ? '' : 'Email'}`}
                                         required />
                                 </div>
 
                                 {/* Password */}
                                 <div className="relative">
-                                    <label className={`text-sm absolute left-3 ${email.regPassword ? '-top-2.5 bg-white z-20' : 'top-2.5'}`}>Password</label>
+                                    <label className={`text-sm absolute left-3 ${placeholder.regPassword ? '-top-2.5 bg-white z-20' : 'top-2.5'}`}>Password</label>
                                     <input type={`${showPassword ? 'text' : 'password'}`}
-                                        onFocus={() => setEmail({ ...email, regPassword: true })}
-                                        onBlur={(e) => e.target.value ? setEmail({ ...email, regPassword: true }) : setEmail({ ...email, regPassword: false })}
+                                        onFocus={() => setPlaceholder({ ...placeholder, regPassword: true })}
+                                        onBlur={(e) => e.target.value ? setPlaceholder({ ...placeholder, regPassword: true }) : setPlaceholder({ ...placeholder, regPassword: false })}
                                         className="input focus-within:outline-0 w-full"
                                         name='password'
-                                        placeholder={`${email?.regPassword ? '' : 'Password'}`}
+                                        placeholder={`${placeholder?.regPassword ? '' : 'Password'}`}
                                         required />
 
                                     <div onClick={() => setShowPassword(!showPassword)} className="absolute top-2.5 right-5 z-30">

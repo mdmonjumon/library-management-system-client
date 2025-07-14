@@ -17,7 +17,7 @@ const CategoryWiseBooks = () => {
 
     return (
         <div className="max-w-7xl mx-auto mt-36">
-            <h2 className="text-center text-2xl font-medium">Total {categoryWiseBooks.length}  books have on {category} category </h2>
+            <h2 className="text-center text-2xl font-medium mb-10">Total {categoryWiseBooks.length}  books have on {category} category </h2>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
                 {
