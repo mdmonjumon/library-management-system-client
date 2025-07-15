@@ -6,7 +6,6 @@ import BookCard from "../../components/shared/BookCard";
 
 const CategoryWiseBooks = () => {
     const { category } = useParams();
-    console.log(category)
     const booksApi = useAxiosApi()
     const [categoryWiseBooks, setCategoryWiseBooks] = useState([])
 

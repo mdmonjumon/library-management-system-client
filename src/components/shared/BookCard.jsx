@@ -1,3 +1,4 @@
+import { motion } from "motion/react"
 import Rating from "react-rating";
 import { FaRegStar, FaStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
@@ -14,7 +15,10 @@ const BookCard = ({ book }) => {
     // lg:card-side
 
     return (
-        <div className="card md:flex-row bg-base-100 shadow-sm p-10">
+        <motion.div
+            whileHover={{y:-10, transition:{duration:.5}}}
+            
+            className="card md:flex-row bg-base-100 shadow-sm p-10">
             <figure>
                 <img className="rounded]"
                     src={image}
@@ -37,7 +41,7 @@ const BookCard = ({ book }) => {
                     <Link to={`/book-details/${_id}`}><button className="btn btn-primary">Details</button></Link>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

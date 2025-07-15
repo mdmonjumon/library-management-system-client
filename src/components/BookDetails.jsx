@@ -6,8 +6,6 @@ import Rating from "react-rating";
 import UseAuth from "../hooks/UseAuth";
 import SweetAlert from "./shared/SweetAlert";
 
-
-
 const BookDetails = () => {
     const [book, setBook] = useState([])
     const { user } = UseAuth()
@@ -27,17 +25,31 @@ const BookDetails = () => {
         singleBookApi.get(`book/${id}`)
             .then(res => setBook(res.data))
     }, [id])
-    const { _id, title, author, category, price, quantity, rating, image, length, description } = book
 
+    const { _id, title, author, category, price, quantity, rating, image, length, description } = book
 
 
     const handleBorrow = (e) => {
         e.preventDefault();
+
+        const formData = new FormData(e.target)
+        const initialData = Object.fromEntries(formData.entries())
+        initialData.bookId = _id;
+
+        // update book quantity
         singleBookApi.patch(`book/${id}`)
             .then(res => {
                 if (res?.data?.modifiedCount > 0) {
                     document.getElementById('my_modal_2').close()
                     SweetAlert("success", "Book successfully added to Borrowed Books list");
+
+                    // single book api call again for update book quantity on ui
+                    singleBookApi.get(`book/${id}`)
+                        .then(res => setBook(res.data))
+
+                    // send borrowed book and user information to server side
+                    singleBookApi.post("borrowed-book", initialData)
+                        .then(res => console.log(res.data))
                 }
             })
 
@@ -83,7 +95,7 @@ const BookDetails = () => {
                                     {/* return date */}
                                     <div className="fieldset relative">
                                         <label className="label text-sm text-black absolute left-3 -top-2 bg-white z-10">Return Date</label>
-                                        <input type="date" className="input focus-within:outline-0 w-full" />
+                                        <input type="date" name="returnDate" className="input focus-within:outline-0 w-full" />
                                     </div>
 
                                     {/* name */}
