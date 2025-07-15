@@ -35,23 +35,35 @@ const BookDetails = () => {
         const formData = new FormData(e.target)
         const initialData = Object.fromEntries(formData.entries())
         initialData.bookId = _id;
+        initialData.borrowDate = new Date();
 
-        // update book quantity
-        singleBookApi.patch(`book/${id}`)
+        // return date validation
+        if (new Date(initialData.returnDate) < new Date()) {
+            document.getElementById('my_modal_2').close()
+            return SweetAlert("error", "Select valid date");
+        }
+
+
+        // send borrowed book and user information to server side
+        singleBookApi.post("borrowed-book", initialData)
             .then(res => {
-                if (res?.data?.modifiedCount > 0) {
-                    document.getElementById('my_modal_2').close()
-                    SweetAlert("success", "Book successfully added to Borrowed Books list");
+                if (res?.data?.insertedId) {
+                    // update book quantity
+                    singleBookApi.patch(`book/${id}`)
+                        .then(res => {
+                            if (res?.data?.modifiedCount > 0) {
+                                document.getElementById('my_modal_2').close()
+                                SweetAlert("success", "Book successfully added to Borrowed Books list");
 
-                    // single book api call again for update book quantity on ui
-                    singleBookApi.get(`book/${id}`)
-                        .then(res => setBook(res.data))
-
-                    // send borrowed book and user information to server side
-                    singleBookApi.post("borrowed-book", initialData)
-                        .then(res => console.log(res.data))
+                                // single book api call again for update book quantity on ui
+                                singleBookApi.get(`book/${id}`)
+                                    .then(res => setBook(res.data))
+                            }
+                        })
                 }
             })
+
+
 
     }
 

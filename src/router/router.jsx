@@ -5,6 +5,8 @@ import Login from "../pages/Login/Login";
 import Home from "../pages/Home/Home";
 import CategoryWiseBooks from "../pages/CategoryWiseBooks/CategoryWiseBooks";
 import BookDetails from "../components/BookDetails";
+import PrivateRoute from "./PrivateRoute";
+import BorrowedBooks from "../pages/BorrowedBooks/BorrowedBooks";
 
 
 const router = createBrowserRouter([
@@ -14,25 +16,29 @@ const router = createBrowserRouter([
         errorElement: <h3>error</h3>,
         children: [
             {
-                path:'/',
-                element:<Home></Home>
+                path: '/',
+                element: <Home></Home>
             },
             {
-                path:'books/:category',
-                element:<CategoryWiseBooks></CategoryWiseBooks>
+                path: '/books/:category',
+                element: <CategoryWiseBooks></CategoryWiseBooks>
             },
             {
-                path:'book-details/:id',
-                element:<BookDetails></BookDetails>
-                
+                path: '/book-details/:id',
+                element: <PrivateRoute><BookDetails></BookDetails></PrivateRoute>
+
             },
             {
-                path:'register',
-                element:<Register></Register>
+                path:'/borrowed-books',
+                element:<BorrowedBooks></BorrowedBooks>
             },
             {
-                path:'login',
-                element:<Login></Login>
+                path: 'register',
+                element: <Register></Register>
+            },
+            {
+                path: 'login',
+                element: <Login></Login>
             },
         ]
     }

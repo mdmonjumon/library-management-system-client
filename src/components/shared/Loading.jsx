@@ -2,8 +2,10 @@
 import { FadeLoader } from 'react-spinners';
 
 const Loading = () => {
+
+    
     return (
-        <div>
+        <div className='flex justify-center items-center h-[calc(100vh-350px)]'>
             <FadeLoader
                 height={20}
                 radius={5}

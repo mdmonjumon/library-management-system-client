@@ -10,9 +10,7 @@ import { Link } from "react-router-dom";
 
 const BookCard = ({ book }) => {
 
-    const { _id, title, author, category, price, quantity, rating, image, length } = book
-
-    // lg:card-side
+    const { _id, title, author, category, price, quantity, rating, image, length } = book;
 
     return (
         <motion.div
