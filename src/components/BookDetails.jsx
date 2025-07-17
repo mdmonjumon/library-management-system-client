@@ -5,10 +5,11 @@ import { FaRegStar, FaStar } from "react-icons/fa";
 import Rating from "react-rating";
 import UseAuth from "../hooks/UseAuth";
 import SweetAlert from "./shared/SweetAlert";
+import { format } from 'date-fns';
 
 const BookDetails = () => {
-    const [book, setBook] = useState([])
-    const { user } = UseAuth()
+    const [book, setBook] = useState([]);
+    const { user } = UseAuth();
 
     // for placeholder legend
     const [placeholder, setPlaceholder] = useState({
@@ -26,8 +27,7 @@ const BookDetails = () => {
             .then(res => setBook(res.data))
     }, [id])
 
-    const { _id, title, author, category, price, quantity, rating, image, length, description } = book
-
+    const { _id, title, author, category, quantity, rating, image, length, description } = book
 
     const handleBorrow = (e) => {
         e.preventDefault();
@@ -35,7 +35,7 @@ const BookDetails = () => {
         const formData = new FormData(e.target)
         const initialData = Object.fromEntries(formData.entries())
         initialData.bookId = _id;
-        initialData.borrowDate = new Date();
+        initialData.borrowDate = format(new Date(), 'yyyy-MM-dd');
 
         // return date validation
         if (new Date(initialData.returnDate) < new Date()) {
@@ -82,7 +82,6 @@ const BookDetails = () => {
                     <p className="text-justify">{description}</p>
                     <p>Category : {category}</p>
                     <p className={quantity < 1 ? "text-rose-500" : ""}>Quantity : {quantity}</p>
-                    <p>Price : ${price}</p>
                     <p>Total Pages: {length}</p>
                     <Rating
                         initialRating={rating}

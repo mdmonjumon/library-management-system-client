@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 
 const BookCard = ({ book }) => {
 
-    const { _id, title, author, category, price, quantity, rating, image, length } = book;
+    const { _id, title, author, category, quantity, rating, image, length } = book;
 
     return (
         <motion.div
@@ -27,7 +27,6 @@ const BookCard = ({ book }) => {
                 <p>By {author}</p>
                 <p>Category : {category}</p>
                 <p>Quantity : {quantity}</p>
-                <p>Price : ${price}</p>
                 <p>Total Pages: {length}</p>
                 <Rating
                     initialRating={rating}

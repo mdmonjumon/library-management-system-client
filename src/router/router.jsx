@@ -7,6 +7,7 @@ import CategoryWiseBooks from "../pages/CategoryWiseBooks/CategoryWiseBooks";
 import BookDetails from "../components/BookDetails";
 import PrivateRoute from "./PrivateRoute";
 import BorrowedBooks from "../pages/BorrowedBooks/BorrowedBooks";
+import AddBook from "../pages/AddBook/AddBook";
 
 
 const router = createBrowserRouter([
@@ -29,8 +30,12 @@ const router = createBrowserRouter([
 
             },
             {
-                path:'/borrowed-books',
-                element:<BorrowedBooks></BorrowedBooks>
+                path: '/borrowed-books',
+                element: <PrivateRoute><BorrowedBooks></BorrowedBooks></PrivateRoute>
+            },
+            {
+                path: '/add-book',
+                element: <PrivateRoute><AddBook></AddBook></PrivateRoute>
             },
             {
                 path: 'register',
