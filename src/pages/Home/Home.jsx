@@ -1,6 +1,7 @@
 import AboutUs from "../../components/AboutUs";
 import Carousel from "../../components/Carousel";
 import Category from "../../components/Category";
+import PopularBooks from "../../components/PopularBooks";
 
 
 const Home = () => {
@@ -19,6 +20,11 @@ const Home = () => {
             {/* category section */}
             <section>
                 <Category></Category>
+            </section>
+
+            {/* popular books */}
+            <section>
+                <PopularBooks></PopularBooks>
             </section>
 
         </div>
