@@ -1,7 +1,13 @@
 import { useState } from "react";
+import useAxiosApi from "../../hooks/useAxiosApi";
+import { useParams } from "react-router-dom";
+import SweetAlert from "../../components/shared/SweetAlert";
 
 
 const UpdateBook = () => {
+
+    const axiosApi = useAxiosApi();
+    const { id } = useParams();
 
     const [placeholder, setPlaceholder] = useState({
         title: false,
@@ -19,7 +25,7 @@ const UpdateBook = () => {
         const formData = new FormData(form);
         const initialData = Object.fromEntries(formData.entries());
         const updatedBookInfo = {
-            ...initialData, length: parseInt(initialData.length), quantity: parseInt(initialData.quantity), rating: parseInt(initialData.rating)
+            ...initialData, quantity: parseInt(initialData.quantity), rating: parseInt(initialData.rating)
         };
 
         if (updatedBookInfo.rating === 0 || updatedBookInfo.rating > 5) {
@@ -27,10 +33,12 @@ const UpdateBook = () => {
             return;
         }
 
-
-        
-
-
+        axiosApi.patch(`update-book/${id}`, updatedBookInfo)
+            .then(res => {
+                if (res.data.modifiedCount > 0) {
+                    SweetAlert("success", "Book updated")
+                }
+            })
     }
 
 

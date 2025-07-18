@@ -1,11 +1,28 @@
-
+import { FaArrowLeftLong } from "react-icons/fa6";
 import { MdCardMembership } from 'react-icons/md';
-import aboutImage from "../assets/about-image.jpg"
 import { FaBook, FaMedal } from 'react-icons/fa';
 import { FcReading } from 'react-icons/fc';
 import Divider from './shared/Divider';
+import { useEffect, useState } from "react";
+import useAxiosApi from "../hooks/useAxiosApi";
 
 const AboutUs = () => {
+    const axiosApi = useAxiosApi();
+    const [images, setImages] = useState([]);
+    const [changeImages, setChangeImages] = useState(0)
+    useEffect(() => {
+        axiosApi.get('images')
+            .then(res => setImages(res.data))
+    }, [])
+
+    const handleChangeImage = () => {
+        if (changeImages === images.length - 1) {
+            setChangeImages(0)
+            return
+        }
+        setChangeImages(changeImages + 1);
+    }
+
     return (
         <div className='bg-[#F5F5F5] py-20 px-3'>
             <div className='max-w-7xl mx-auto'>
@@ -52,8 +69,11 @@ const AboutUs = () => {
                             <p className='w-4/5'>Stay current with the latest editions, newly released titles, and regularly updated content across all categories.</p>
                         </div>
                     </div>
-                    <div className='hidden md:flex flex-1/2'>
-                        <img className='aspect-[11/12] size-full object-cover rounded-lg' src={aboutImage} alt="" />
+                    <div className='hidden md:flex flex-1/2 relative'>
+                        <img className='aspect-[11/14] size-full object-cover rounded-lg' src={images[changeImages]} alt="" />
+                        <div onClick={handleChangeImage} className='h-10 w-10 border-2 border-blue-600 absolute z-10 -bottom-5 right-1/2 translate-x-1/2 rotate-45 bg-white flex justify-center items-center rounded cursor-pointer'>
+                            <FaArrowLeftLong className="size-5 rotate-135 text-blue-600" />
+                        </div>
                     </div>
                 </div>
             </div>

@@ -43,7 +43,6 @@ const BookDetails = () => {
             return SweetAlert("error", "Select valid date");
         }
 
-
         // send borrowed book and user information to server side
         singleBookApi.post("borrowed-book", initialData)
             .then(res => {
