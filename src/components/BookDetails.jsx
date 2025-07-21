@@ -9,6 +9,7 @@ import { format } from 'date-fns';
 
 const BookDetails = () => {
     const [book, setBook] = useState([]);
+    const [borrowed, setBorrowed] = useState(false)
     const { user } = UseAuth();
 
     // for placeholder legend
@@ -17,17 +18,41 @@ const BookDetails = () => {
         regEmail: true,
 
     });
-
     // api
     const singleBookApi = useAxiosApi()
     const { id } = useParams()
 
     useEffect(() => {
-        singleBookApi.get(`book/${id}`)
-            .then(res => setBook(res.data))
-    }, [id])
+        bookDetails()
+        checkAllReadyBorrowed()
+    }, [])
+
+
+    const checkAllReadyBorrowed = async () => {
+
+        const { data } = await singleBookApi.get(`borrowed-books/${user.email}`)
+        data.map(d => {
+            if (d._id === id) {
+                setBorrowed(true)
+            }
+        })
+
+
+    }
+
+    const bookDetails = async () => {
+
+        const { data } = await singleBookApi.get(`book/${id}`)
+        setBook(data)
+
+    }
+
 
     const { _id, title, author, category, quantity, rating, image, length, description } = book
+
+
+
+
 
     const handleBorrow = (e) => {
         e.preventDefault();
@@ -57,6 +82,7 @@ const BookDetails = () => {
                                 // single book api call again for update book quantity on ui
                                 singleBookApi.get(`book/${id}`)
                                     .then(res => setBook(res.data))
+                                setBorrowed(true)
                             }
                         })
                 }
@@ -89,7 +115,9 @@ const BookDetails = () => {
                     ></Rating>
 
                     <div className="card-actions justify-start">
-                        <button disabled={quantity < 1 ? true : false} onClick={() => document.getElementById('my_modal_2').showModal()} className="btn btn-primary text-lg">Borrow</button>
+                        <button disabled={quantity < 1 || borrowed ? true : false} onClick={() => document.getElementById('my_modal_2').showModal()} className={`btn btn-primary text-lg`}>
+                            { borrowed? "Borrowed": "Borrow"}
+                        </button>
                     </div>
                 </div>
             </div>

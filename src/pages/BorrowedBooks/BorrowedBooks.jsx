@@ -14,7 +14,7 @@ const BorrowedBooks = () => {
     const fetchBorrowedBooks = async () => {
 
         try {
-            const { data } = await borrowedBooksApi.get(`borrowed-books/${user?.email}`)
+            const { data } = await borrowedBooksApi.get(`borrowed-books/${user.email}`)
             setBorrowedBooks(data)
         }
         catch (error) {

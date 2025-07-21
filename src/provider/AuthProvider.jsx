@@ -1,13 +1,17 @@
 import { useEffect, useState } from "react";
 import auth from "../firebase/firebase.init";
 import AuthContext from "./AuthContext";
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
+import axios from "axios";
+
 
 
 const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const googleProvider = new GoogleAuthProvider();
+
 
     // register new user
     const registerUser = (email, password) => {
@@ -21,9 +25,11 @@ const AuthProvider = ({ children }) => {
         return signInWithEmailAndPassword(auth, email, password);
     }
 
-
-
-
+    // sign in with google
+    const signInWithGoogle = ()=>{
+        setLoading(true);
+        return signInWithPopup(auth, googleProvider);
+    }
 
 
 
@@ -32,22 +38,31 @@ const AuthProvider = ({ children }) => {
         return updateProfile(auth.currentUser, userInfo);
     }
 
+    // Logout user
+    const userLogout = () => {
+        setLoading(true);
+        return signOut(auth);
+    }
+
 
     // user state manage
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
-            setLoading(false)
+            if (currentUser?.email) {
+                const user = { email: currentUser.email }
+                axios.post('http://localhost:5000/jwt', user , {withCredentials:true})
+                    setLoading(false)
+            }
+            else{
+                axios.post('http://localhost:5000/logout', {}, {withCredentials:true})
+                setLoading(false)
+            }
         })
 
         return () => unsubscribe();
     }, [])
 
-    // Logout user
-
-    const userLogout = () => {
-        return signOut(auth)
-    }
 
 
     const authInfo = {
@@ -55,6 +70,7 @@ const AuthProvider = ({ children }) => {
         loading,
         registerUser,
         userLogin,
+        signInWithGoogle,
         updateUserProfile,
         userLogout
     }

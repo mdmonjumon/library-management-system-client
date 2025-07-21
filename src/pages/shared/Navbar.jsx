@@ -5,10 +5,21 @@ import { useState } from 'react';
 
 const Navbar = () => {
     const [hover, setHover] = useState(false)
-    const { user, userLogout } = UseAuth()
+    const { user, userLogout } = UseAuth();
+    const [allBooksMenu, setAllBooksMenu] = useState(false)
+
+
     const links = <>
         <li><NavLink to="/">Home</NavLink> </li>
-        <li><NavLink to="/all-books">All Books</NavLink> </li>
+        <div onMouseEnter={()=>setAllBooksMenu(true)} onMouseLeave={()=>setAllBooksMenu(false)} className='relative'>
+            <li><NavLink to="/all-books">All Books</NavLink> </li>
+
+            {/* <div className={`absolute min-w-max p-4 bg-white rounded -top-48 ${allBooksMenu? "top-10":''}`}>
+                <li><NavLink to="/all-books">Card View</NavLink> </li>
+                <li><NavLink to="/all-books">Table View</NavLink> </li>
+            </div> */}
+        </div>
+        
         <li><NavLink to="/add-book">Add Book</NavLink> </li>
         <li><NavLink to="/borrowed-books">Borrowed Books</NavLink> </li>
     </>

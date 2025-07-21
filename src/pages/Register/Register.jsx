@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import SocialLogin from "../shared/SocialLogin";
 import { FaRegEye } from "react-icons/fa6";
 import { GoEyeClosed } from "react-icons/go";
 import UseAuth from "../../hooks/UseAuth";
+import SweetAlert from "../../components/shared/SweetAlert";
 
 
 
@@ -41,9 +41,11 @@ const Register = () => {
             .then((result) => {
                 if (result?.user?.email) {
                     updateUserProfile(userInfo)
+                    SweetAlert("success", "Register Success")
+
                 }
-                console.log(result.user)
-                alert('registration success');
+                
+                
             })
             .catch(error => {
                 console.log(error.message)
@@ -125,8 +127,6 @@ const Register = () => {
                             </fieldset>
                         </form>
                         <p className="text-center text-base">Already have an account? <Link to='/login' className="text-rose-500">Login</Link></p>
-
-                        <SocialLogin></SocialLogin>
                     </div>
                 </div>
             </div>
