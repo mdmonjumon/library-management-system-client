@@ -45,7 +45,7 @@ const UpdateBook = () => {
     return (
         <div className="hero bg-base-200 min-h-[calc(100vh-353px)] mt-14">
             <div className="hero-content flex-col lg:flex-row-reverse mt-10">
-                <div className="card bg-base-100 min-w-sm md:min-w-lg md:max-w-lg shrink-0 shadow-2xl">
+                <div className="card bg-base-100 md:min-w-lg md:max-w-lg shrink-0 shadow-2xl">
                     <div className="card-body">
                         <h2 className="text-xl text-center">Update Your Book</h2>
                         <form onSubmit={handleUpdateBook}>

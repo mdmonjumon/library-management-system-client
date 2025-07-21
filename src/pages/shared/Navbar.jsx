@@ -6,24 +6,15 @@ import { useState } from 'react';
 const Navbar = () => {
     const [hover, setHover] = useState(false)
     const { user, userLogout } = UseAuth();
-    const [allBooksMenu, setAllBooksMenu] = useState(false)
+ 
 
 
     const links = <>
         <li><NavLink to="/">Home</NavLink> </li>
-        <div onMouseEnter={()=>setAllBooksMenu(true)} onMouseLeave={()=>setAllBooksMenu(false)} className='relative'>
-            <li><NavLink to="/all-books">All Books</NavLink> </li>
-
-            {/* <div className={`absolute min-w-max p-4 bg-white rounded -top-48 ${allBooksMenu? "top-10":''}`}>
-                <li><NavLink to="/all-books">Card View</NavLink> </li>
-                <li><NavLink to="/all-books">Table View</NavLink> </li>
-            </div> */}
-        </div>
-        
+        <li><NavLink to="/all-books">All Books</NavLink> </li>
         <li><NavLink to="/add-book">Add Book</NavLink> </li>
         <li><NavLink to="/borrowed-books">Borrowed Books</NavLink> </li>
     </>
-
 
     const handleLogout = () => {
         setHover(false)
@@ -31,12 +22,12 @@ const Navbar = () => {
     }
 
     return (
-        <div className='w-full fixed top-0 left-1/2 -translate-x-1/2 z-10 bg-white/80'>
+        <div className='w-full fixed top-0 left-1/2 -translate-x-1/2 z-10 bg-black/60'>
             <div className="navbar max-w-7xl mx-auto">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
                         </div>
                         <ul
                             tabIndex={0}
@@ -44,10 +35,10 @@ const Navbar = () => {
                             {links}
                         </ul>
                     </div>
-                    <h2 className='text-3xl font-bold bg-gradient-to-r from-blue-500 to-green-500 text-clip text-transparent bg-clip-text'>BookOcean</h2>
+                    <h2 className='hidden md:flex text-3xl font-bold bg-gradient-to-r from-blue-500 to-green-500 text-clip text-transparent bg-clip-text'>BookOcean</h2>
                 </div>
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1 text-lg">
+                    <ul className="menu menu-horizontal px-1 text-lg text-white">
                         {links}
                     </ul>
                 </div>
@@ -66,8 +57,8 @@ const Navbar = () => {
                             </div>
                             : <>
 
-                                <button className='text-lg mr-4'><Link to='login'>Login</Link></button>
-                                <button className='text-lg'><Link to='register'>Register</Link></button>
+                                <button className='text-lg mr-4 text-white'><Link to='login'>Login</Link></button>
+                                <button className='text-lg text-white'><Link to='register'>Register</Link></button>
                             </>
                     }
                 </div>

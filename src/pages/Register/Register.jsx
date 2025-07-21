@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaRegEye } from "react-icons/fa6";
 import { GoEyeClosed } from "react-icons/go";
 import UseAuth from "../../hooks/UseAuth";
@@ -10,7 +10,8 @@ import SweetAlert from "../../components/shared/SweetAlert";
 const Register = () => {
 
     const { registerUser, updateUserProfile } = UseAuth();
-    const [error, setError] = useState('')
+    const [error, setError] = useState('');
+    const navigate = useNavigate();
 
     // for placeholder legend
     const [placeholder, setPlaceholder] = useState({
@@ -42,13 +43,12 @@ const Register = () => {
                 if (result?.user?.email) {
                     updateUserProfile(userInfo)
                     SweetAlert("success", "Register Success")
-
+                    navigate('/')
                 }
                 
-                
             })
-            .catch(error => {
-                console.log(error.message)
+            .catch(() => {
+                SweetAlert("error", "Try again")
             })
 
     }

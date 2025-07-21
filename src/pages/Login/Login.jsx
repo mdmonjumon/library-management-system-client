@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SocialLogin from "../shared/SocialLogin";
 import { FaRegEye } from "react-icons/fa6";
 import { GoEyeClosed } from "react-icons/go";
@@ -9,6 +9,7 @@ import SweetAlert from "../../components/shared/SweetAlert";
 const Login = () => {
 
     const { userLogin } = UseAuth()
+    const navigate = useNavigate()
 
     const [email, setEmail] = useState({
         regName: false,
@@ -28,7 +29,9 @@ const Login = () => {
         userLogin(email, password)
         .then(result=>{
             if(result?.user?.email){
-                SweetAlert('success', 'You have logged in successfully.')
+                SweetAlert('success', 'Successfully Logged in.')
+                navigate('/')
+
             }
         })
         .catch(error=>{

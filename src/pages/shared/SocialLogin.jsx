@@ -1,12 +1,18 @@
+import { useNavigate } from "react-router-dom";
+import SweetAlert from "../../components/shared/SweetAlert";
 import UseAuth from "../../hooks/UseAuth";
 
 
 const SocialLogin = () => {
-    const {signInWithGoogle} = UseAuth();
+    const { signInWithGoogle } = UseAuth();
+    const navigate = useNavigate();
 
-    const googleSignIn = ()=>{
+    const googleSignIn = () => {
         signInWithGoogle()
-        .then(res => console.log(res.user))
+            .then(() => {
+                SweetAlert('success', 'Login Successful')
+                navigate('/')
+            })
     }
     return (
         <div>

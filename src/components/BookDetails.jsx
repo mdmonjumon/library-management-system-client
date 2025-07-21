@@ -102,7 +102,7 @@ const BookDetails = () => {
                 </figure>
                 <div className="card-body py-0 pr-0 flex-1/2 text-base">
                     <h2 className="card-title">{title}</h2>
-                    <p>By {author}</p>
+                    <p>By: {author}</p>
 
                     <p className="text-justify">{description}</p>
                     <p>Category : {category}</p>
