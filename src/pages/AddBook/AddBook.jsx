@@ -37,7 +37,6 @@ const AddBook = () => {
 
         axiosApi.post('book-add', bookInfo)
             .then(res => {
-                console.log(res.data)
                 if (res.data.insertedId) {
                     SweetAlert('success', 'Book successfully added')
                     form.reset();
