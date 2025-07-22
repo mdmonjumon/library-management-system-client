@@ -1,12 +1,57 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Project Title :- BookOcean: A Library Management System
 
-Currently, two official plugins are available:
+Live Website Link: https://bookocean-8cdce.web.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+## Purpose:
+BookOcean is A Library Management System web application designed to automate and streamline the daily operations of a library. It helps manage books, track borrowed date and returned date.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Key Features:
+- User Registration and Login with Email and Password.
+
+- Login with Google Account - one-click authentication.
+
+- User can Add, update and borrow books 
+
+- Responsive UI with Tailwind CSS and DaisyUI components.
+
+- Real-Time Notifications using React Toastify.
+
+- Categorize books
+
+- Track issued and returned dates.
+
+- Track the number of available books
+
+- Secure Authentication powered by Google Firebase.
+
+
+## Technologies & NPM Packages Used:
+- React
+
+- React Router DOM
+
+- Tailwind CSS
+
+- axios
+
+- axios Instance and interceptors
+
+- date-fns
+
+- motion
+
+- react-rating
+
+- sweetalert2
+
+- swiper
+
+- DaisyUI
+
+- React Icons
+
+- React Toastify
+
+- Firebase Authentication
